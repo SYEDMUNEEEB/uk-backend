@@ -100,6 +100,10 @@ app.get("/resume/:certificateNumber", async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 })
+app.get("/", async (req, res) => {
+    res.send("Hello from backend ilets");
+  });
+  
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

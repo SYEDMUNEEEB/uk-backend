@@ -8,22 +8,7 @@ const app = express();
 const port = 7000;
 
 
-const allowedOrigins = [ 'http://localhost:3000','https://ukcareersponsor.com/']; // Add more origins as needed
-app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type'],
-  credentials: true // Allow cookies to be sent cross-origin
-}));
+app.use(cors()); 
 // Set up MongoDB connection
 mongoose.connect('mongodb+srv://tourism:abubaker@cluster0.ndjmmo0.mongodb.net/', {
     useNewUrlParser: true,
